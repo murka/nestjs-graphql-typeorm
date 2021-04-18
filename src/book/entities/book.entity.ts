@@ -1,13 +1,13 @@
-import { Field, ObjectType } from '@nestjs/graphql'
-import { Entity, BaseEntity, Column, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
-import { BookDTO } from '../dto/Book.interface'
+import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { BookDTO, BookID } from '../dto/Book.interface'
 
 @Entity({ name: 'book' })
 @ObjectType()
 export class BookEntity extends BaseEntity implements BookDTO {
-  @Field(() => Number)
+  @Field(() => ID)
   @PrimaryGeneratedColumn('increment')
-  id: number
+  id: BookID
 
   @Column('text')
   @Field(() => String)

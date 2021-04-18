@@ -2,9 +2,7 @@ import { Resolver, Mutation, Query, Args } from '@nestjs/graphql'
 import { CreateBookInput } from './dto/CreateBook.input'
 import { BookEntity } from './entities/book.entity'
 import { BookService } from './book.service'
-import { BookDTO } from './dto/Book.interface'
-
-type ID = BookDTO['id']
+import { BookID } from './dto/Book.interface'
 
 @Resolver(() => BookEntity)
 export class BookResolver {
@@ -22,7 +20,7 @@ export class BookResolver {
 
   @Query(() => BookEntity)
   async FindOneBook(
-    @Args('id') id: ID
+    @Args('id') id: BookID
   ): Promise<BookEntity> {
     return await this.BookService.FindOneBook(id)
   }

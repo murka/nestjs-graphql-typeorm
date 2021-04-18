@@ -1,5 +1,7 @@
+export type BookID = number 
+
 export interface BookDTO {
-  id?: number
+  id?: BookID
 
   name: string
   description?: string
