@@ -1,0 +1,26 @@
+version: "3"
+services: 
+  nest-application:
+    container_name: nest-application
+    restart: always
+    build: .
+    image: nest-application
+    depends_on: 
+      - postgres
+    ports: 
+      - "3000:3000"
+    environment: 
+      - PORT=3000
+      - DBURL=postgres://postgres:postgres@postgres-application:5432/nest-application
+  postgres:
+    image: postgres:latest
+    container_name: postgres-application
+    restart: always
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nest-application
+    volumes: 
+      - nest-application-data:/var/lib/postgresql/data
+volumes: 
+  nest-application-data:
