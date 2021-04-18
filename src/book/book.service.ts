@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Observable } from 'rxjs'
 import { Repository } from 'typeorm'
 
 import { BookEntity } from './entities/book.entity'
