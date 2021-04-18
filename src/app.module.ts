@@ -4,10 +4,13 @@ import { AppService } from './app.service'
 import { AppResolver } from './app.resolver' 
 import { TypeORMModule } from './typeorm/typeorm.module'
 import { GraphqlModule } from './graphql/graphql.module'
+
+import { BookModule } from './book/book.module'
 @Module({
   imports: [
     TypeORMModule,
-    GraphqlModule
+    GraphqlModule,
+    BookModule,
   ],
   controllers: [AppController],
   providers: [AppResolver, AppService],
